@@ -19,13 +19,16 @@
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 <script>
 //Inicjalizacja Mapy i ustawienie współrzędnych i przblienia    
-    var map = L.map('map').setView([50.94, 21.39], 13.5);
+    var map = L.map('map').setView([50.94, 21.39], 13);
 
     var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 });
 
 osm.addTo(map)
+
+map.removeControl(map.zoomControl);
+map.scrollWheelZoom.disable();
 //Ustawienie rodzaju wyświetlanej warstwy mapy - tutaj CartoDB_DarkMatter
     var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -37,7 +40,7 @@ osm.addTo(map)
 
 
 //Markery
-    var pierwszyMarker = L.marker([50.945, 21.395]);
+    var pierwszyMarker = L.marker([50.915718, 21.364536]);
     var popup = pierwszyMarker.bindPopup('Mały Miś').openPopup()
 
 popup.addTo(map)
