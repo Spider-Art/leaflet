@@ -41,9 +41,34 @@ map.dragging.disable();
 //CartoDB_DarkMatter.addTo(map)
 
 
-//Markery
+//Znaczniki
     var pierwszyMarker = L.marker([50.915718, 21.364536]);
-    var popup = pierwszyMarker.bindPopup('Mały Miś').openPopup()
+    var popup = pierwszyMarker.bindPopup('Dane z czujnika 1').openPopup()
 
-popup.addTo(map)
+    var drugiMarker = L.marker([50.928497, 21.385117]);
+    var popup = drugiMarker.bindPopup('Dane z czujnika 2').openPopup() 
+
+    var trzeciMarker = L.marker([50.9342, 21.39225]);
+    var popup = trzeciMarker.bindPopup('Dane z czujnika 3').openPopup()
+
+//popup.addTo(map)
+
+//Grupowanie Znaczników
+
+    var ZnacznikiSyngeos = L.layerGroup([pierwszyMarker, drugiMarker, trzeciMarker])
+
+ZnacznikiSyngeos.addTo(map)
+//Kontrola Warstyw i Znaczników
+
+var baseMaps ={
+    "Open Street Map": osm,
+    "Dark Map": CartoDB_DarkMatter
+};
+
+var overlayMaps = {
+    "ZnacznikSyngeos": ZnacznikiSyngeos
+};
+
+var layerControl = L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
+
 </script>
